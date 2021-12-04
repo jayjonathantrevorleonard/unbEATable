@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production nodemon server/server.js",
+    "start": "cross-env NODE_ENV=production node server/server.js",
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "concurrently \"cross-env NODE_ENV=development webpack serve --open\" \"cross-env NODE_ENV=development nodemon server/server.js\""
   },
@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/jayjonathantrevorleonard/Wunderpuss-Photogenicus-Project#readme",
   "dependencies": {
+    "axios": "^0.24.0",
     "cors": "^2.8.5",
     "express": "^4.16.3",
     "node-fetch": "^2.3.0",
@@ -34,6 +35,10 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-hot-loader": "^4.6.3",
+    "react-redux": "^7.2.6",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-promise": "^0.6.0",
+    "redux-thunk": "^2.4.1",
     "sass": "^1.44.0",
     "sass-loader": "^12.3.0"
   },
