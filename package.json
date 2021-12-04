@@ -1,0 +1,60 @@
+{
+  "name": "wunderpuss-photogenicus-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production nodemon server/server.js",
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "concurrently \"cross-env NODE_ENV=development webpack serve --open\" \"cross-env NODE_ENV=development nodemon server/server.js\""
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "public",
+      "client"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jayjonathantrevorleonard/Wunderpuss-Photogenicus-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jayjonathantrevorleonard/Wunderpuss-Photogenicus-Project/issues"
+  },
+  "homepage": "https://github.com/jayjonathantrevorleonard/Wunderpuss-Photogenicus-Project#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.3",
+    "node-fetch": "^2.3.0",
+    "node-sass": "^6.0.1",
+    "pg": "^8.7.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-hot-loader": "^4.6.3",
+    "sass": "^1.44.0",
+    "sass-loader": "^12.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "concurrently": "^6.4.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.5.1",
+    "eslint": "^8.3.0",
+    "eslint-plugin-react": "^7.27.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "nodemon": "^2.0.15",
+    "style-loader": "^3.3.1",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0",
+    "webpack-hot-middleware": "^2.25.1"
+  }
+}
