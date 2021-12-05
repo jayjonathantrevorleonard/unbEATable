@@ -20,7 +20,7 @@ const searchReducers = (state = searchInitialState, action) => {
             //     .then((data) => {
             //         return {
             //             ...state,
-            //             search: data
+            //             search: data //TODO: data will be an object so this needs to be changed
             //         }
             //     })
             return {
