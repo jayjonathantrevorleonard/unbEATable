@@ -1,5 +1,6 @@
 import * as types from '../constants/actionTypes';
 
+
 const searchInitialState = {
     searchSuccess: false,
     restaurantInfo: {},

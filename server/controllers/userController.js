@@ -8,7 +8,7 @@ userController.getLogin = async (req, res, next) => {
     // https://stackoverflow.com/questions/8389811/how-to-query-mongodb-to-test-if-an-item-exists
     // const  checkLogin= { username: req.body.username, password: req.body.password };
     const { username, password } = req.body;
-    const result = await db.usersDatabase.countDocuments({ username, password }, { limit: 1 })
+    const result = await Users.countDocuments({ username, password }, { limit: 1 })
         if(result === 1){
             try {
                 res.locals.login = true;
