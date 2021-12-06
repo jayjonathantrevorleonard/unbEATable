@@ -5,3 +5,7 @@ export const sendSearchActionCreator = (city) => ({
     payload: city
 });
 
+export const LOGIN = (user, pass) => ({
+    type: types.LOG_IN,
+    payload: {username: user, password: pass}
+});

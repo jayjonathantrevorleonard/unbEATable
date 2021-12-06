@@ -1,82 +1,30 @@
 import React, { Component } from 'react';
 import clouds from '../Images/clouds.jpg';
+// import { Text, View, Stylesheet, Image } from 'react-native';
+// import { Container } from 'react-bootstrap';
 
 const Login = (props) => {
-      // if (this.state.login === 'false') {
     return (
       <div align='center'>
+          <img src={clouds} style={{width: 300, height: 300}}/>
         <h1>Logo</h1>
-        <img src={clouds} width='100' height='100'/>
-        {/* <input type='text' id='username'></input>
-        <input type='text' id='password'></input>
-        <input type='submit' value='Login'></input> */}
+        {/* <img src={clouds} width='auto' height='auto'/> */}
+        {/* <ImageBackground source={clouds} style={{width: 300, height: 300}} resizeMode={'cover'} /> */}
         <form>
-          <label> Username <input type='username'/> </label>
+          <label> Username <input type='text' id='username'/> </label>
           <br/>
-          <label> Password <input type='password'/> </label>
+          <label> Password <input type='text' id='password'/> </label>
           <br/>
-          <label> <button type='submit'>Signup</button> <button type='submit'>Login</button> </label>  
+          <label> <button type='submit' onClick={() => {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            return props.sendLogin({username: user, password: pass});
+          }
+          }>Signup</button> <button type='submit'>Login</button> </label>  
         </form>
       </div>
     );
-    // }
-    // else {
-    //   return (
-    //     <div>
-    //       <Search/>
-    //     </div>
-    //   );
 };
 
-// class Login extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       login: false, //changes to true/false from backend
-//       error: null
-//     };
-//   }
-
-//   render() {
-
-//     // login === 'false' may change
-//     if (this.state.login === 'false') {
-//     return (
-//       <div>
-//         <h1>Logo</h1>
-//         <input type='text' id='username'></input>
-//         <input type='text' id='password'></input>
-//         <input type='submit' value='Login'></input>
-//         {/* <form>
-//           <label>
-//             <p>Username</p>
-//             <input type='username'/>
-//           </label>
-//           <label>
-//             <p>Password</p>
-//             <input type='password'/>
-//           </label>
-//           <button type='submit'>Login</button>
-//         </form> */}
-//       </div>
-//     );
-//     }
-//     else {
-//       return (
-//         <div>
-//           <Search/>
-//         </div>
-//       );
-//     }
-//   }
-
-// }
-// taking back and goin to localhost8080.api/login
-// const Login = props => (
-//   <div className='Login'>
-
-
-//   </div>
-// );
 
 export default Login;

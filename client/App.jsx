@@ -1,29 +1,39 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-// import HomeContainer from './containers/HomeContainer.jsx';
 import Login from './components/Login.jsx';
-=======
 import HomeContainer from './containers/HomeContainer.jsx';
-// import Login from './components/Login.jsx';
->>>>>>> 294f58f901e92f58f750ac5c6bf22fa6ca269817
+import * as actions from './actions/actions.js';
+import { connect } from 'react-redux';
+
+const mapStateToProps = (store) => ({
+  Login: store.state.login,
+});
+
+const mapDispatchToProps = dispatch => ({
+  sendLogin:
+      (user, pass) => dispatch(actions.LOGIN(user, pass))
+});
+
 class App extends Component {
   constructor() {
     super();
-  }
+  };
 
   render() {
-    return(
+    if (!this.props.login) {
+      return (
       <div>
-<<<<<<< HEAD
-        {/* <HomeContainer/> */}
-        <Login/>
-=======
+      <Login Login={this.props.sendLogin}/>
+      </div>
+      );
+    } else { 
+      return(
+      <div>
         <h1>App rendering</h1>
         <HomeContainer/>
->>>>>>> 294f58f901e92f58f750ac5c6bf22fa6ca269817
       </div>
-    );
+      );
+    }
   }
 }
-
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+// export default App;
