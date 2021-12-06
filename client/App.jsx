@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import HomeContainer from './containers/HomeContainer.jsx';
+import HomeContainer from './containers/HomeContainer.jsx';
 // import Login from './components/Login.jsx';
 class App extends Component {
   constructor() {
@@ -9,8 +9,8 @@ class App extends Component {
   render() {
     return(
       <div>
-        <h1>hi</h1>
-        {/* <HomeContainer/> */}
+        <h1>App rendering</h1>
+        <HomeContainer/>
       </div>
     );
   }
