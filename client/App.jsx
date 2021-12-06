@@ -13,6 +13,8 @@ const mapDispatchToProps = dispatch => ({
       (user, pass) => dispatch(actions.LOGIN(user, pass))
 });
 
+import HomeContainer from './containers/HomeContainer.jsx';
+// import Login from './components/Login.jsx';
 class App extends Component {
   constructor() {
     super();
@@ -26,14 +28,15 @@ class App extends Component {
       </div>
       );
     } else { 
-      return(
-      <div>
-        <h1>App rendering</h1>
-        <HomeContainer/>
+    return(
+      <div className='background'>
+        <div>
+          <h1>App rendering</h1>
+          <HomeContainer/>
+        </div>
+
       </div>
       );
-    }
-  }
 }
+  }}
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-// export default App;
