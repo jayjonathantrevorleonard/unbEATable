@@ -5,7 +5,7 @@ const userController = require ('../controllers/userController');
 
 const router = express.Router();
 
-router.post('/login/', userController,
+router.post('/login/', userController.getLogin,
     (req, res) => {
         if (res.locals.login === false){
             res.status(200)
@@ -23,4 +23,23 @@ router.post('/login/', userController,
     }
 );
 
-exports.module = router;
+router.post('/login/', userController.getLogin,
+    (req, res) => {
+        if (res.locals.login === false){
+            res.status(200)
+                .send({
+                    'login': res.locals.login,
+                    'error': true,
+                });
+        } else {
+            res.status(200)
+                .send({
+                    'login': res.locals.login,
+                    'error': false,
+                });
+        };
+    }
+);
+
+
+module.exports = router;

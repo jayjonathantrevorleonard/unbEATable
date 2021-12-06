@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Search from '../components/Search.jsx';
 import Favourites from '../components/Favourites.jsx';
+import * as actions from '../actions/actions.js';
+
 
 const mapStateToProps = (store) => ({
     search: store.state.search,
