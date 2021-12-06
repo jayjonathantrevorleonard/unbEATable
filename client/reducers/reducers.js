@@ -27,9 +27,9 @@ const searchReducers = (state = searchInitialState, action) => {
                         search: data //TODO: data will be an object so this needs to be changed
                     }
                 })
-            return {
-                ...state
-            }
+            // return {
+            //     ...state
+            // }
         }
 
         case types.REJECT_BUTTON: {
