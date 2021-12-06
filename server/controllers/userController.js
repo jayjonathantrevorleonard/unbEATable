@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const db = require('../models/')
+const Users = require('../models/')
 const userController = {};
 
 userController.getLogin = async (req, res, next) => {
@@ -16,7 +16,7 @@ userController.getLogin = async (req, res, next) => {
             } catch (e) {
                 return next({
                     log: `userController.getLogin: ERROR: ${e}`,
-                    message: { err: 'Error occured in userController.getLogin. Check server logs for more details' }, 
+                    message: { err: 'Error occurred in userController.getLogin. Check server logs for more details' }, 
                 })
             }
         } else {
@@ -26,7 +26,7 @@ userController.getLogin = async (req, res, next) => {
             } catch (e) {
                 return next({
                 log: `userController.getLogin: ERROR: ${e}`,
-                message: { err: 'Error occured in userController.getLogin. Check server logs for more details' }, 
+                message: { err: 'Error occurred in userController.getLogin. Check server logs for more details' }, 
                 })
         }
     };

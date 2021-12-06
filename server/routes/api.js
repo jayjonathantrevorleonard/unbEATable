@@ -22,3 +22,5 @@ router.post('/login/', userController,
         };
     }
 );
+
+exports.module = router;

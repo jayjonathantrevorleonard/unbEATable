@@ -9,7 +9,7 @@ const PORT = 3000;
 // enable all CORS requests
 app.use(cors());
 
-// const apiRouter = require('./routes/api');
+const apiRouter = require('./routes/api');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
