@@ -18,7 +18,7 @@ const usersSchema = new Schema({
   username: String,
   password: String,
   lastResult: {},
-  favourites: {},
+  favourites: [],
   pastRestaurants: []
 });
 
