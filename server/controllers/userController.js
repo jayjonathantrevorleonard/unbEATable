@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const Users = require('../models/')
+const Users = require('../models/usersDatabase.js')
 const userController = {};
 
 userController.getLogin = async (req, res, next) => {

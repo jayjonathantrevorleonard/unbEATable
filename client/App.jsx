@@ -8,9 +8,11 @@ class App extends Component {
 
   render() {
     return(
-      <div>
-        <h1>App rendering</h1>
-        <HomeContainer/>
+      <div className='background'>
+        <div>
+          <h1>App rendering</h1>
+          <HomeContainer/>
+        </div>
       </div>
     );
   }
