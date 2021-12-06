@@ -2,7 +2,10 @@ import * as types from '../constants/actionTypes';
 
 const searchInitialState = {
     search: false,
-    favouites: false
+    showFavourites: false,
+    acceptButton: false,
+    rejectButton: {},
+    favouritesButton: false,
 };
 
 const searchReducers = (state = searchInitialState, action) => {
@@ -27,6 +30,35 @@ const searchReducers = (state = searchInitialState, action) => {
                 ...state
             }
         }
+
+        case types.REJECT_BUTTON: {
+
+            return {
+                ...state
+            }
+        }
+
+        case types.ACCEPT_BUTTON: {
+
+            return {
+                ...state
+            }
+        }
+
+        case types.FAVOURITES_BUTTON: {
+
+            return {
+                ...state
+            }
+        }
+
+        case types.HOME: {
+            // change state.search to true to return to home page
+            return {
+                ...state
+            }
+        }
+
         default: {
             return state;
         }

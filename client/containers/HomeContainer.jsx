@@ -4,8 +4,8 @@ import Search from '../components/Search.jsx';
 import Favourites from '../components/Favourites.jsx';
 
 const mapStateToProps = (store) => ({
-    search: store.searchPage.search,
-    favourites: store.searchPage.favourites
+    search: store.state.search,
+    favourites: store.state.favourites
 })
 
 const mapDispatchToProps = dispatch => ({
