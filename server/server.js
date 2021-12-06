@@ -9,7 +9,7 @@ const PORT = 3000;
 // enable all CORS requests
 app.use(cors());
 
-// const apiRouter = require('./routes/api');
+const apiRouter = require('./routes/api');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -20,6 +20,8 @@ app.get('/', (req,res) => {
         .status(200)
         .sendFile(path.resolve(__dirname, '../client/index.html'));
 });
+
+app.use('/api', apiRouter);
 
 app.use((req, res) => res.sendStatus(404));
 
