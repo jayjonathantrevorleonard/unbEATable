@@ -39,6 +39,7 @@ const searchReducers = (state = searchInitialState, action) => {
         }
 
         case types.LOG_IN: {
+            console.log('reached');
             // fetch('http://localhost:8080/api', { //TODO: fix url
             //     method: 'POST',
             //     headers: {'Content-Type': 'application/json'},
@@ -55,7 +56,7 @@ const searchReducers = (state = searchInitialState, action) => {
             //     })
             return {
                 ...state,
-                Login: true
+                login: true
             }
         }
 

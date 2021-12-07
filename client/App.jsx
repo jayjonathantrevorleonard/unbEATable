@@ -5,7 +5,7 @@ import * as actions from './actions/actions.js';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (store) => ({
-  Login: store.state.login,
+  login: store.state.login,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -20,12 +20,11 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.props.login);
-    console.log(this.props.sendLogin);
+    console.log(this.props.login)
     if (!this.props.login) {
       return (
       <div>
-      <Login Login={this.props.sendLogin}/>
+      <Login sendLogin={this.props.sendLogin}/>
       </div>
       );
     } else { 
@@ -40,5 +39,5 @@ class App extends Component {
   }}
 
 
-  
+
 export default connect(mapStateToProps, mapDispatchToProps)(App);
