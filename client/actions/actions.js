@@ -1,13 +1,13 @@
 import * as types from '../constants/actionTypes';
 
-export const sendSearchActionCreator = (city) => ({
+export const sendSearchActionCreator = (data) => ({
     type: types.SEND_SEARCH,
-    payload: city
+    payload: data
 });
 
-export const LOGIN = (user, pass) => ({
+export const LOGIN = () => ({
     type: types.LOG_IN,
-    payload: {username: user, password: pass}
+    // payload: {username: user, password: pass}
 });
 export const acceptButtonActionCreator = () => ({
     type: types.ACCEPT_BUTTON,

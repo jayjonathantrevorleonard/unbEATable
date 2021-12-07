@@ -10,17 +10,19 @@ const mapStateToProps = (store) => ({
 
 const mapDispatchToProps = dispatch => ({
   sendLogin:
-      (user, pass) => dispatch(actions.LOGIN(user, pass))
+      () => dispatch(actions.LOGIN())
 });
 
 // import Login from './components/Login.jsx';
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   };
 
   render() {
-    if (this.props.login) {
+    console.log(this.props.login);
+    console.log(this.props.sendLogin);
+    if (!this.props.login) {
       return (
       <div>
       <Login Login={this.props.sendLogin}/>
@@ -32,9 +34,11 @@ class App extends Component {
         <div>
           <HomeContainer/>
         </div>
-
       </div>
       );
 }
   }}
+
+
+  
 export default connect(mapStateToProps, mapDispatchToProps)(App);

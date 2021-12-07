@@ -17,9 +17,11 @@ const Login = (props) => {
           <input id='passwordBar' type='text'/>
           <br/>
           <label> <button id='loginButton' type='submit' onClick={() => {
-            const user = document.getElementById('usernameBar').value;
-            const pass = document.getElementById('passwordBar').value;
-            return props.sendLogin({username: user, password: pass});
+            // const user = document.getElementById('usernameBar').value;
+            // const pass = document.getElementById('passwordBar').value;
+            // return props.sendLogin({username: user, password: pass});
+            console.log(props);
+            return props.sendLogin();
           }
           }>Login</button> </label>  
         </form>
