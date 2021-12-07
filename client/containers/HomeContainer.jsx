@@ -27,14 +27,12 @@ class HomeContainer extends Component {
         if (this.props.searchSuccess === false && this.props.showFavourites === false) {
             return(
                 <div>
-                    <h2>Home container rendering</h2>
                     <Search sendSearch={this.props.sendSearch}/>
                 </div>
             )
         } else if (this.props.searchSuccess === true && this.props.showFavourites === false) {
             return(
                 <div>
-                    <h2>Results Page rendering</h2>
                     <Results restaurantInfo={this.props.restaurantInfo} />
                 </div>
             )

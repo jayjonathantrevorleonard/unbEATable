@@ -13,7 +13,6 @@ const mapDispatchToProps = dispatch => ({
       (user, pass) => dispatch(actions.LOGIN(user, pass))
 });
 
-import HomeContainer from './containers/HomeContainer.jsx';
 // import Login from './components/Login.jsx';
 class App extends Component {
   constructor() {
@@ -21,7 +20,7 @@ class App extends Component {
   };
 
   render() {
-    if (!this.props.login) {
+    if (this.props.login) {
       return (
       <div>
       <Login Login={this.props.sendLogin}/>
@@ -31,7 +30,6 @@ class App extends Component {
     return(
       <div className='background'>
         <div>
-          <h1>App rendering</h1>
           <HomeContainer/>
         </div>
 

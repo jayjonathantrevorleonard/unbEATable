@@ -7,7 +7,7 @@ const Search = (props) => {
         <div>
             <img src={logo} alt='logo1' height='100' />
             <input type='text' id='searchBox'></input>
-            <input type='submit' value='Send' onClick={() => {
+            <input id='searchButton' type='submit' value='Search' onClick={() => {
                 const content = document.getElementById('searchBox').value;
                 document.getElementById('searchBox').value = '';
                 return props.sendSearch(content);
