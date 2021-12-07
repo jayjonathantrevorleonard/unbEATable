@@ -1,4 +1,96 @@
-.background {
-    background-image: url('./assets/star.png');
+.background { 
+    background-image: url(https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
+    padding-left: 20em;
+    padding-right: 20em;
+    padding-top: 11em;
+    padding-bottom: 23em;
+    text-align: center;
 }
 
+.loginBackground {
+    background-image: url(https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80);
+    padding-left: 20em;
+    padding-right: 20em;
+    padding-top: 11em;
+    padding-bottom: 15em;
+
+}
+
+.login {
+    padding: 40px;
+}
+
+#username {
+    margin-top: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16;
+    color:rgb(47, 95, 54)
+}
+
+#usernameBar {
+    margin-top: 10px;
+    text-indent: 10px;
+    display: block;
+    width: 200px;
+    height: 30px;
+    justify-self: center;
+    align-self: center;
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 7%/100%;
+    font-size: 16;
+}
+
+#password {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16;
+    color:rgb(47, 95, 54)
+}
+
+#passwordBar {
+    margin-top: 10px;
+    text-indent: 10px;
+    display: block;
+    width: 200px;
+    height: 30px;
+    justify-self: center;
+    align-self: center;
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 7%/100%;
+    font-size: 16;
+}
+
+#searchBox {
+    margin-top: 100px;
+    text-indent: 30px;
+    width: 500px;
+    height: 45px;
+    justify-self: center;
+    align-self: center;
+    border: 1px solid rgb(27, 78, 7);
+    border-radius: 7%/100%;
+    font-size: 18;
+}
+
+#searchButton {
+    margin-top: 70px;   
+    background-color: rgb(47, 95, 54);
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 5px;
+    width: 120px;
+    height: 40px;
+    font-size: 16;
+    color: rgb(255, 255, 255);
+}
+
+#loginButton {
+    margin-top: 20px;   
+    background-color: rgb(250, 250, 250);
+    border: 1px solid white;
+    border-radius: 5px;
+    width: 80px;
+    height: 30px;
+    font-size: 16;
+    color:rgb(47, 95, 54);
+}
