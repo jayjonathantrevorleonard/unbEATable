@@ -15,7 +15,25 @@ const mapStateToProps = (store) => ({
 
 const mapDispatchToProps = dispatch => ({
     sendSearch:
-        (city) => dispatch(actions.sendSearchActionCreator(city))
+        (city) => {
+            fetch('http://localhost:8080/api', { //TODO: fix url
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    searchBar: city
+                })
+            })
+                // .then((received) => received.json())
+                .then((data) => {
+                    console.log(data);
+                    // return {
+                    //     ...state,
+                    //     searchSuccess: true,
+                    //     restaurantInfo: data //TODO: data will be an object so this needs to be changed
+                    // }
+                    dispatch(actions.sendSearchActionCreator(data))
+                })
+        }
 });
 
 class HomeContainer extends Component {

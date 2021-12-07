@@ -2,6 +2,7 @@ import * as types from '../constants/actionTypes';
 
 
 const searchInitialState = {
+    login: false,
     searchSuccess: false,
     restaurantInfo: {},
     showFavourites: false,
@@ -15,24 +16,30 @@ const searchReducers = (state = searchInitialState, action) => {
 
     switch (action.type) {
         case types.SEND_SEARCH: {
-            fetch('http://localhost:8080/api', { //TODO: fix url
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    searchBar: action.payload
-                })
-            })
-                .then((received) => received.json())
-                .then((data) => {
-                    return {
-                        ...state,
-                        searchSuccess: true,
-                        restaurantInfo: data //TODO: data will be an object so this needs to be changed
-                    }
-                })
+            // fetch('http://localhost:8080/api', { //TODO: fix url
+            //     method: 'POST',
+            //     headers: {'Content-Type': 'application/json'},
+            //     body: JSON.stringify({
+            //         searchBar: action.payload
+            //     })
+            // })
+            //     .then((received) => received.json())
+            //     .then((data) => {
+            //         return {
+            //             ...state,
+            //             searchSuccess: true,
+            //             restaurantInfo: data //TODO: data will be an object so this needs to be changed
+            //         }
+            //     })
+            return {
+                ...state,
+                searchSuccess: true,
+                restaurantInfo: action.payload //TODO: data will be an object so this needs to be changed
+            }
         }
 
         case types.LOG_IN: {
+            console.log('reached');
             // fetch('http://localhost:8080/api', { //TODO: fix url
             //     method: 'POST',
             //     headers: {'Content-Type': 'application/json'},
@@ -49,7 +56,7 @@ const searchReducers = (state = searchInitialState, action) => {
             //     })
             return {
                 ...state,
-                Login: true
+                login: true
             }
         }
 
