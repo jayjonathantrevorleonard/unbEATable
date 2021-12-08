@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config(); // loads the .env file into process.env variable
 
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = "mongodb+srv://danger:noods@cluster0.g4vdp.mongodb.net/usersdb?retryWrites=true&w=majority";
 
 mongoose.connect(MONGO_URI, {
   // options for the connect method to parse the URI
@@ -15,8 +15,8 @@ const Schema = mongoose.Schema;
 
 // sets a schema for the 'species' collection
 const usersSchema = new Schema({
-  username: String,
-  password: String,
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true, unique: true },
   lastResult: {},
   favourites: [],
   pastRestaurants: []
