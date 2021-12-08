@@ -5,7 +5,7 @@ const searchInitialState = {
     login: false,
     searchSuccess: false,
     restaurantInfo: {},
-    showFavourites: false,
+    // showFavourites: false,
     acceptButton: false,
     favouritesButton: false,
     showFavourites: false,
