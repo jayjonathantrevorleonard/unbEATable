@@ -25,13 +25,13 @@ const mapDispatchToProps = dispatch => ({
             })
                 // .then((received) => received.json())
                 .then((data) => {
-                    console.log(data);
+                    console.log('data: ', data);
                     // return {
                     //     ...state,
                     //     searchSuccess: true,
                     //     restaurantInfo: data //TODO: data will be an object so this needs to be changed
                     // }
-                    dispatch(actions.sendSearchActionCreator(data))
+                    dispatch(actions.sendSearchActionCreator(data));
                 })
         }
 });

@@ -4,28 +4,40 @@ import logo from '../assets/unbeatable.png';
 // import { Container } from 'react-bootstrap';
 
 const Login = (props) => {
-  console.log(props);
-    return (
-      <div className='loginBackground' align='center'>
-          <img src={logo} height='100'/>
-        {/* <img src={clouds} width='auto' height='auto'/> */}
-        {/* <ImageBackground source={clouds} style={{width: 300, height: 300}} resizeMode={'cover'} /> */}
-          <label id='username'> Username </label>
-          <input id='usernameBar' type='text'/>
-          <br/>
-          <label id='password'> Password </label>
-          <input id='passwordBar' type='text'/>
-          <br/>
-          <button id='loginButton' onClick={() => {
-            // const user = document.getElementById('usernameBar').value;
-            // const pass = document.getElementById('passwordBar').value;
-            // return props.sendLogin({username: user, password: pass});
-            console.log(props.sendLogin)
-            return props.sendLogin();
-          }
-          }>Login</button> 
-      </div>
-    );
+  console.log('props: ', props);
+
+  function handleLogin() {
+    fetch('/login', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: document.getElementById('usernameBar').value,
+        password: document.getElementById('passwordBar').value,
+      }),
+      headers: {"Content-Type": "application/json"},
+    }).then((response) => response.json())
+      .then((data) => {
+       return props.sendLoginStatus(data); // true
+    }).catch((err) => {
+      console.log(err);
+      return; // false
+    })
+  }
+
+
+  return (
+    <div className='loginBackground' align='center'>
+      <img src={logo} height='100'/>
+      {/* <img src={clouds} width='auto' height='auto'/> */}
+      {/* <ImageBackground source={clouds} style={{width: 300, height: 300}} resizeMode={'cover'} /> */}
+      <label htmlFor="usernameBar"> Username </label>
+      <input id='usernameBar' type='text' name="username"/>
+      <br/>
+      <label htmlFor="passwordBar"> Password </label>
+      <input id='passwordBar' type='text' name="pw"/>
+      <br/>
+      <button id='loginButton' type="submit" onClick={() => {handleLogin()}}> Login </button>
+    </div>
+  );
 };
 
 

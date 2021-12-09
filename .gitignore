@@ -2,3 +2,4 @@ node_modules
 public/*.js
 .DS_Store
 .env
+yelpAPI.js
