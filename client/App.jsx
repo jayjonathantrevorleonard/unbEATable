@@ -23,7 +23,7 @@ class App extends Component {
     // console.log('log-in status:', this.props.loginStatus) // logs the function definition of sendLoginStatus
     if (!this.props.loginStatus) {
       return (
-        <div>
+        <div className='loginBackground'>
           <Login sendLoginStatus={this.props.sendLoginStatus}/>
         </div>
       );
@@ -38,7 +38,5 @@ class App extends Component {
     }
   }
 }
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

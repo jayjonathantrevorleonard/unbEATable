@@ -14,8 +14,9 @@ export const acceptButtonActionCreator = () => ({
   type: types.ACCEPT_BUTTON,
 });
 
-export const rejectButtonActionCreator = () => ({
+export const rejectButtonActionCreator = (prevRestaurantIndex) => ({
   type: types.REJECT_BUTTON,
+  payload: prevRestaurantIndex,
 });
 
 export const favouritesButtonActionCreator = () => ({

@@ -13,32 +13,32 @@ const Login = (props) => {
         username: document.getElementById('usernameBar').value,
         password: document.getElementById('passwordBar').value,
       }),
-      headers: {"Content-Type": "application/json"},
-    }).then((response) => response.json())
-      .then((data) => {
-       return props.sendLoginStatus(data); // true
-    }).catch((err) => {
-      console.log(err);
-      return; // false
+      headers: { 'Content-Type': 'application/json' },
     })
+      .then((response) => response.json())
+      .then((data) => {
+        return props.sendLoginStatus(data); // true
+      })
+      .catch((err) => {
+        console.log(err);
+        return; // false
+      });
   }
 
-
   return (
-    <div className='loginBackground' align='center'>
-      <img src={logo} height='100'/>
+    <div className="login">
+      <img src={logo} height="100" />
       {/* <img src={clouds} width='auto' height='auto'/> */}
       {/* <ImageBackground source={clouds} style={{width: 300, height: 300}} resizeMode={'cover'} /> */}
       <label htmlFor="usernameBar"> Username </label>
-      <input id='usernameBar' type='text' name="username"/>
-      <br/>
+      <input id="usernameBar" type="text" name="username" />
+      <br />
       <label htmlFor="passwordBar"> Password </label>
-      <input id='passwordBar' type='text' name="pw"/>
-      <br/>
-      <button id='loginButton' type="submit" onClick={() => {handleLogin()}}> Login </button>
+      <input id="passwordBar" type="text" name="pw" />
+      <br />
+      <button id="loginButton" type="submit" onClick={() => handleLogin()}> Login </button>
     </div>
   );
 };
-
 
 export default Login;

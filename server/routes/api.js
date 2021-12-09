@@ -7,9 +7,9 @@ const router = express.Router();
 
 
 // this router handles the get request from the client that sends over the location submitted by the user as a url-encoded parameter
-router.get('/search/:location', yelpController.search, (req,res) => {
+router.get('/search/:location', yelpController.search, (req, res) => {
     console.log('reached the end of the middleware');
-    res.sendStatus(200);
+    res.status(200).json(res.locals.results);
 })
 
 // router.post('/', yelpController.search, (req, res) => {
