@@ -21,6 +21,7 @@ yelpController.search = (req, res, next) => {
     .then((response) => {
       if (response) {
         console.log('document found from database');
+        console.log(response);
         res.locals.results = response;
         return next();
       } else {
@@ -42,8 +43,9 @@ yelpController.search = (req, res, next) => {
               location: req.params.location,
               businesses: apiResponse.businesses,
             })
-              .then((data) => {
+              .then((data) => { // data is from mongoDB
                 console.log('succesfully added new location to db');
+                console.log(data);
                 res.locals.results = data;
                 return next();
               })
@@ -133,25 +135,6 @@ yelpController.search = (req, res, next) => {
 // url
 // rating
 // price
-
-// client
-//   .search(searchRequest)
-//   .then((response) => {
-//     const firstResult = response.jsonBody.businesses;
-//     // const firstResult = response.jsonBody;
-//     const prettyJson = JSON.stringify(firstResult, null, 4);
-//     // console.log(prettyJson);
-//     res.locals.data = prettyJson;
-//     // console.log('search middleware data', res.locals.data);
-//     return next();
-//   })
-//   .catch((e) => {
-//     return next(console.log(e));
-//   });
-
-// yelpController.getResponse = (req, res, next) => {
-//   fetch('https://api.yelp.com/v3/businesses/search/')
-// }
 
 yelpController.randomRestaurant = (req, res, next) => {
   // console.log(res.locals.data);

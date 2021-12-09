@@ -5,6 +5,7 @@ const searchInitialState = {
   searchSuccess: false,
   restaurantInfo: {},
   // showFavourites: false,
+  pastRestaurants: [],
   acceptButton: false,
   favouritesButton: false,
   showFavourites: false,
@@ -14,7 +15,7 @@ const searchInitialState = {
 const searchReducers = (state = searchInitialState, action) => {
   switch (action.type) {
     case types.SEND_SEARCH: {
-      console.log('sending search: city')
+      console.log('sending search: city');
       return {
         ...state,
         searchSuccess: true,
@@ -31,14 +32,12 @@ const searchReducers = (state = searchInitialState, action) => {
     }
 
     case types.REJECT_BUTTON: {
-      fetch('http://localhost:8080/api') // TODO: need to fix url
-        .then((received) => received.json())
-        .then((data) => {
-          return {
-            ...state,
-            restaurantInfo: data,
-          };
-        });
+      let newPastRestaurants = [...state.pastRestaurants];
+      newPastRestaurants.push(action.payload);
+      return {
+        ...state,
+        pastRestaurants: newPastRestaurants,
+      };
     }
 
     case types.ACCEPT_BUTTON: {
