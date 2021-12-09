@@ -5,12 +5,12 @@ import * as actions from './actions/actions.js';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (store) => ({
-  login: store.state.login,
+  loginStatus: store.state.loginStatus,
 });
 
 const mapDispatchToProps = dispatch => ({
-  sendLogin:
-      () => dispatch(actions.LOGIN())
+  sendLoginStatus:
+    (loginStatus) => dispatch(actions.LOGIN(loginStatus)),
 });
 
 // import Login from './components/Login.jsx';
@@ -20,23 +20,24 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.props.login)
-    if (!this.props.login) {
+    // console.log('log-in status:', this.props.loginStatus) // logs the function definition of sendLoginStatus
+    if (!this.props.loginStatus) {
       return (
-      <div>
-      <Login sendLogin={this.props.sendLogin}/>
-      </div>
+        <div>
+          <Login sendLoginStatus={this.props.sendLoginStatus}/>
+        </div>
       );
     } else { 
     return(
       <div className='background'>
         <div>
-          <HomeContainer/>
+          <HomeContainer />
         </div>
       </div>
       );
+    }
+  }
 }
-  }}
 
 
 

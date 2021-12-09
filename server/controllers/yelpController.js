@@ -1,35 +1,153 @@
 const fs = require('fs');
 const path = require('path');
-const Users = require('../models/usersDatabase.js');
-const yelpController = {};
-require('dotenv').config(); // loads the .env file into process.env variable
+const { Users, Locations } = require('../models/usersDatabase.js');
 const fetch = require('node-fetch');
-const yelp = require('yelp-fusion');
+const yelpAPI = require('../yelpAPI')
+// const yelp = require('yelp-fusion');
 
+const yelpController = {};
+
+/****************************************************** DO NOT CHANGE THIS PART ******************************************************/
+
+// this controller makes the request to the Yelp API, since we have to make the API call from our server
+// rather than the client because Yelp blocked CORS access
 yelpController.search = (req, res, next) => {
-  const { searchBar } = req.body;
-  const searchRequest = {
-    // term:'Four Barrel Coffee',
-    location: searchBar,
-  };
+  // based on Yelp API documentation, tacking the parameter from the url string onto the end of business search endpoint
+  // to get businesses near the location provided
 
-  const client = yelp.client(process.env.YELP_AUTHORIZATION);
-
-  client
-    .search(searchRequest)
+  // using .findOne with a callback function
+  console.log('beginning of the brand new day');
+  Locations.findOne({ location: req.params.location })
     .then((response) => {
-      const firstResult = response.jsonBody.businesses;
-      // const firstResult = response.jsonBody;
-      const prettyJson = JSON.stringify(firstResult, null, 4);
-      // console.log(prettyJson);
-      res.locals.data = prettyJson;
-      // console.log('search middleware data', res.locals.data);
-      return next();
+      if (response) {
+        console.log('document found from database');
+        res.locals.results = response;
+        return next();
+      } else {
+        console.log('document not found in db, about to make call to API');
+        fetch(
+          `https://api.yelp.com/v3/businesses/search?location=${req.params.location}`,
+          {
+            headers: {
+              // this header is required to be able to access API. The API key was provided to us once we registered our app on Yelp's Developer platform
+              Authorization:
+                yelpAPI,
+            },
+          }
+        ) 
+          .then((apiResponse) => apiResponse.json())
+          .then((apiResponse) => {
+            console.log('we got a response from the api, about to create a document in the collection');
+            Locations.create({
+              location: req.params.location,
+              businesses: apiResponse.businesses,
+            })
+              .then((data) => {
+                console.log('succesfully added new location to db');
+                res.locals.results = data;
+                return next();
+              })
+              .catch((err) => {
+                console.log('!! we got an error in the create function !!');
+                return next({
+                  log: '!! error trying to get create location in database !!',
+                  status: 400,
+                  message: { err: `!! An error occurred: ${err} !!` },
+                });
+              });
+          });
+      }
     })
-    .catch((e) => {
-      return next(console.log(e));
-    });
+      .catch((err) => {
+        console.log('we got an error from the findOne function');
+        return next({
+          log: '!! error trying to get location from database !!',
+          status: 500,
+          message: {
+            err: '!! An error occurred: error trying to get location from database !!',
+          },
+        });
+      })
+  
+  /*
+  console.log('beginning of the end');
+  Locations.findOne({ location: req.params.location }, (err, response) => {
+    if (err) {
+      console.log('we got an error from the findOne function');
+      return next({
+        log: '!! error trying to get location from database !!',
+        status: 500,
+        message: {
+          err: '!! An error occurred: error trying to get location from database !!',
+        },
+      });
+    };
+    if (response === null) {
+      console.log('document not found in db, about to make call to API');
+      fetch(
+        `https://api.yelp.com/v3/businesses/search?location=${req.params.location}`,
+        {
+          headers: {
+            // this header is required to be able to access API. The API key was provided to us once we registered our app on Yelp's Developer platform
+            Authorization:
+              'Bearer B70lUl4QZ5CRfWFVtwT4vB2M88lXWsfhrSldiOHXcF2EElvqXyFGTYkAdaYS_rmvsi9pq1V5UIDadSSe1gy1EplkwpR1_fIth9C55CvCPJNguGNq5De8QBVuqCuwYXYx',
+          },
+        }
+      )
+        .then((apiResponse) => apiResponse.json())
+        .then((apiResponse) => {
+          console.log(
+            'we got a response from the api, about to create a document in the collection'
+          );
+          Locations.create({
+            location: req.params.location,
+            businesses: apiResponse.businesses[0].name,
+          })
+            .then((data) => {
+              console.log('succesfully added new location to db');
+              res.locals.results = data;
+              return next();
+            })
+            .catch((err) => {
+              console.log('!! we got an error in the create function !!');
+              return next({
+                log: '!! error trying to get create location in database !!',
+                status: 400,
+                message: { err: `!! An error occurred: ${err} !!` },
+              });
+            });
+        });
+    } else {
+      console.log('document found from database');
+      res.locals.results = response;
+      return next();
+    }
+  });
+  */
 };
+
+// const client = yelp.client(process.env.YELP_AUTHORIZATION);
+// id
+// name
+// image_url
+// url
+// rating
+// price
+
+// client
+//   .search(searchRequest)
+//   .then((response) => {
+//     const firstResult = response.jsonBody.businesses;
+//     // const firstResult = response.jsonBody;
+//     const prettyJson = JSON.stringify(firstResult, null, 4);
+//     // console.log(prettyJson);
+//     res.locals.data = prettyJson;
+//     // console.log('search middleware data', res.locals.data);
+//     return next();
+//   })
+//   .catch((e) => {
+//     return next(console.log(e));
+//   });
 
 // yelpController.getResponse = (req, res, next) => {
 //   fetch('https://api.yelp.com/v3/businesses/search/')

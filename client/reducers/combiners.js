@@ -6,7 +6,7 @@ import searchReducers from './reducers.js';
 
 
 const combiners = combineReducers({
-    state: searchReducers
+  state: searchReducers,
 });
 
 

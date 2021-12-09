@@ -1,37 +1,20 @@
 const express = require('express');
 
-const path = require ('path');
-const userController = require ('../controllers/userController');
-const yelpController = require ('../controllers/yelpController');
+const path = require('path');
+const yelpController = require('../controllers/yelpController');
 
 const router = express.Router();
 
-router.post('/login/', userController.getLogin,
-    (req, res) => {
-        if (res.locals.login === false){
-            res.status(200)
-                .send({
-                    'login': res.locals.login,
-                    'error': true,
-                });
-        } else {
-            res.status(200)
-                .send({
-                    'login': res.locals.login,
-                    'error': false,
-                });
-        };
-    }
-);
-// {
-//     "error": {
-//         "code": "VALIDATION_ERROR",
-//         "description": "Authorization is a required parameter.",
-//         "field": "Authorization",
-//         "instance": null
-//     }
-// }
 
+// this router handles the get request from the client that sends over the location submitted by the user as a url-encoded parameter
+router.get('/search/:location', yelpController.search, (req,res) => {
+    console.log('reached the end of the middleware');
+    res.sendStatus(200);
+})
+
+// router.post('/', yelpController.search, (req, res) => {
+//   }
+// );
 
 // router.post('/', yelpController.search, yelpController.randomRestaurant,
 //     (req, res) => {
@@ -42,24 +25,23 @@ router.post('/login/', userController.getLogin,
 //         catch {
 //             res.status(400).json({
 //                 log: `yelpController.search: ERROR: unknown`,
-//                 message: { err: 'Error occurred in yelpController.search. Check server logs for more details' }, 
+//                 message: { err: 'Error occurred in yelpController.search. Check server logs for more details' },
 //             });
 //         }
-//         // if (res.locals.login === false){
-//         //     res.status(200)
-//         //         .send({
-//         //             'login': res.locals.login,
-//         //             'error': true,
-//         //         });
-//         // } else {
-//         //     res.status(200)
-//         //         .send({
-//         //             'login': res.locals.login,
-//         //             'error': false,
-//         //         });
-//         // };
-//     }
+        // if (res.locals.login === false){
+        //     res.status(200)
+        //         .send({
+        //             'login': res.locals.login,
+        //             'error': true,
+        //         });
+        // } else {
+        //     res.status(200)
+        //         .send({
+        //             'login': res.locals.login,
+        //             'error': false,
+        //         });
+        // };
+    // }
 // );
-
 
 module.exports = router;

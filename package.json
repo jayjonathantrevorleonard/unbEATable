@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=production node server/server.js",
     "build": "cross-env NODE_ENV=production webpack",
-    "dev": "concurrently \"cross-env NODE_ENV=development webpack serve --open\" \"cross-env NODE_ENV=development nodemon server/server.js\""
+    "dev": "cross-env NODE_ENV=development webpack serve --open & cross-env NODE_ENV=development nodemon server/server.js"
   },
   "nodemonConfig": {
     "ignore": [
@@ -19,7 +19,7 @@
     "url": "git+https://github.com/jayjonathantrevorleonard/Wunderpuss-Photogenicus-Project.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Danger Noodle 47",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jayjonathantrevorleonard/Wunderpuss-Photogenicus-Project/issues"
