@@ -5,3 +5,4 @@ export const FAVOURITES_BUTTON = 'FAVOURITES_BUTTON';
 export const FAVOURITES_LIST = 'FAVOURITES_LIST';
 export const HOME = 'HOME';
 export const LOG_IN = 'LOG_IN';
+export const RESULTS_PAGE = 'RESULTS_PAGE';

@@ -19,6 +19,7 @@ class App extends Component {
     super(props);
   };
 
+
   render() {
     // console.log('log-in status:', this.props.loginStatus) // logs the function definition of sendLoginStatus
     if (!this.props.loginStatus) {
