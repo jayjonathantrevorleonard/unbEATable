@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { Users, Locations } = require('../models/usersDatabase.js');
 const fetch = require('node-fetch');
-const yelpAPI = require('../yelpAPI')
+const yelpAPI = require('../yelpAPI.js')
 // const yelp = require('yelp-fusion');
 
 const yelpController = {};

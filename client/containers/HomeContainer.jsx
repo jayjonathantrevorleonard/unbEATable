@@ -12,6 +12,7 @@ const mapStateToProps = (store) => ({
   showFavourites: store.state.showFavourites,
   restaurantInfo: store.state.restaurantInfo,
   pastRestaurants: store.state.pastRestaurants,
+  randomNumber: store.state.randomNumber,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -31,6 +32,23 @@ const mapDispatchToProps = (dispatch) => ({
   rejectOption: (prevRestaurantIndex) => {
     dispatch(actions.rejectButtonActionCreator(prevRestaurantIndex));
   },
+
+  favouritesButton: (currentRestaurant) => {
+    
+    dispatch(actions.favouritesButtonActionCreator(currentRestaurant))
+  },
+
+  favouritesListButton: () => {
+    dispatch(actions.favouritesListActionCreator())
+  },
+
+  homeButton: () => {
+    dispatch(actions.homeActionCreator())
+  },
+
+  returnToResultsButton: () => {
+    dispatch(actions.returnToResultsPageActionCreator())
+  }
 });
 
 class HomeContainer extends Component {
@@ -58,13 +76,21 @@ class HomeContainer extends Component {
             restaurantInfo={this.props.restaurantInfo}
             rejectOption={this.props.rejectOption}
             pastRestaurants={this.props.pastRestaurants}
+            favouritesButton={this.props.favouritesButton}
+            favouritesListButton={this.props.favouritesListButton}
+            homeButton={this.props.homeButton}
+            randomNumber={this.props.randomNumber}
           />
         </div>
       );
     } else if (this.props.showFavourites === true) {
       return (
         <div>
-          <Favourites favouritesList={this.props.favouritesList} />
+          <Favourites 
+          favouritesList={this.props.favouritesList}
+          homeButton={this.props.homeButton}
+          returnToResultsButton={this.props.returnToResultsButton} 
+          />
         </div>
       );
     }

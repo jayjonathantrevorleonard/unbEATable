@@ -10,6 +10,7 @@ const searchInitialState = {
   favouritesButton: false,
   showFavourites: false,
   favouritesList: [],
+  randomNumber: 19
 };
 
 const searchReducers = (state = searchInitialState, action) => {
@@ -32,11 +33,18 @@ const searchReducers = (state = searchInitialState, action) => {
     }
 
     case types.REJECT_BUTTON: {
-      let newPastRestaurants = [...state.pastRestaurants];
+      const newPastRestaurants = [...state.pastRestaurants];
       newPastRestaurants.push(action.payload);
+      let random = Math.floor(Math.random() * 19);
+      let noMore = 0
+      while (state.pastRestaurants.includes(random) && noMore < 18 ) {
+        noMore = state.pastRestaurants.length
+        random = Math.floor(Math.random() * 19);
+      }
       return {
         ...state,
         pastRestaurants: newPastRestaurants,
+        randomNumber: random
       };
     }
 
@@ -48,30 +56,21 @@ const searchReducers = (state = searchInitialState, action) => {
     }
 
     case types.FAVOURITES_BUTTON: {
-      fetch('http://localhost:8080/api', {
-        //TODO: fix url
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          searchBar: action.payload, //TODO: fix payload
-        }),
-      })
-        .then((received) => received.json())
-        .then((data) => {
-          return {
-            ...state,
-            favouritesButton: true, //TODO: data will be an object so this needs to be changed
-          };
-        });
+      const favourited = [...state.favouritesList];
+      if(!state.favouritesList.includes(action.payload)) {
+        favourited.push(action.payload)
+      }
+      return {
+        ...state,
+        favouritesButton: true, //TODO: data will be an object so this needs to be changed
+        favouritesList: favourited,
+      };
     }
 
     case types.FAVOURITES_LIST: {
-      // TODO:
-
       return {
         ...state,
-        showFavourites: true,
-        favouritesList: 'need to change', //TODO: add list
+        showFavourites: true
       };
     }
 
@@ -80,7 +79,17 @@ const searchReducers = (state = searchInitialState, action) => {
       return {
         ...state,
         searchSuccess: false,
+        showFavourites: false,
+        randomNumber: 19
       };
+    }
+
+    case types.RESULTS_PAGE: {
+      return {
+        ...state,
+        searchSucess: true,
+        showFavourites: false
+      }
     }
 
     default: {

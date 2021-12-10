@@ -27,9 +27,10 @@ const Login = (props) => {
 
   return (
     <div className="login">
-      <img src={logo} height="100" />
+      <img id="login" src={logo} height="100px" width="100%"/>
       {/* <img src={clouds} width='auto' height='auto'/> */}
       {/* <ImageBackground source={clouds} style={{width: 300, height: 300}} resizeMode={'cover'} /> */}
+      <br />
       <label htmlFor="usernameBar"> Username </label>
       <input id="usernameBar" type="text" name="username" />
       <br />

@@ -19,10 +19,19 @@ export const rejectButtonActionCreator = (prevRestaurantIndex) => ({
   payload: prevRestaurantIndex,
 });
 
-export const favouritesButtonActionCreator = () => ({
+export const favouritesButtonActionCreator = (currentRestaurant) => ({
   type: types.FAVOURITES_BUTTON,
+  payload: currentRestaurant,
 });
 
 export const favouritesListActionCreator = () => ({
   type: types.FAVOURITES_LIST,
 });
+
+export const homeActionCreator = () => ({
+  type: types.HOME,
+})
+
+export const returnToResultsPageActionCreator = () => ({
+  type: types.RESULTS_PAGE,
+})
