@@ -10,7 +10,7 @@ const Search = (props) => {
     <div className="search">
       <img src={logo} alt="logo1" height="100" />
       <br />
-      <input type="text" id="searchBox" placeholder="what city do you want to eat in?"></input>
+      <input type="text" id="searchBox" placeholder="What city do you want to eat in?"></input>
       <br />
       <button
         id="searchButton"

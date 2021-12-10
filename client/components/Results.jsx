@@ -26,15 +26,18 @@ const Results = (props) => {
         <label id="rLabel">{props.restaurantInfo.businesses[props.randomNumber].name}</label>
         {/* <br /> */}
         <div>{stars}</div>
-        {/* reject button */}
-        <button onClick={() => props.rejectOption(props.randomNumber)}>Next</button>
-        {/* favourites button */}
-        <button onClick={() => props.favouritesButton(props.restaurantInfo.businesses[props.randomNumber])} id="heart">♥</button>
-        <button
-          onClick={() => window.open(props.restaurantInfo.businesses[props.randomNumber].url, '_blank')}
-        >
-          ✔️
-        </button>
+        <span>
+          {/* reject button */}
+          <button id="reject" onClick={() => props.rejectOption(props.randomNumber)}>Next</button>
+          {/* favourites button */}
+          {' '}
+          <button id="heart" onClick={() => props.favouritesButton(props.restaurantInfo.businesses[props.randomNumber])}>♥</button>
+          {' '}
+          <button id="check"
+            onClick={() => window.open(props.restaurantInfo.businesses[props.randomNumber].url, '_blank')}
+          >✔️ 
+          </button>
+        </span>
         <button onClick={() => props.favouritesListButton()}>Favourites List</button>
         <button onClick={() => props.homeButton()}>Home Page</button>
       </div>

@@ -54,7 +54,6 @@
     resize: both;
 }
 
-
 #username {
     width: 60%;
     padding: 10px;
@@ -116,19 +115,24 @@
     color:rgb(35, 68, 40);
 }
 
-#heart {
+#heart #check {
     color: black;
-    border-radius: 15px;
-    padding: 1px;
+    width: 15px;
+    height: 15px;
 }
 
 #heart:focus {
     color: red;
-    padding: 1px;
+    // padding: 1px;
 }
 
 #rLabel {
     color: white;
     font-size: 16px;
     padding: 2px;
+}
+
+#favItem {
+    background-color: lightgoldenrodyellow;
+    margin-bottom: 15px;
 }
